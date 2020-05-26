@@ -1,1 +1,1117 @@
-"Hello World" 
+<!doctype html>
+<html>
+
+<head>
+	<title>Help me choose Algorithm V3</title>
+	<script src="dist/Chart.min.js"></script>
+	<script src="script.js"></script>
+	<style>
+	canvas {
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
+	</style>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="util.css">
+  
+</head>
+
+<body id="intro">  <!-- style="background-color:#fff8e4;">-->
+  <!--
+	<div style="width:75%" >
+		<canvas id="canvas" align="center"></canvas>
+	</div>
+	<button id="randomizeData"  hidden></button>
+  
+  <h4 id='CARANDPOWERTRAIN' align="center"><u></u></h4>
+
+  <h4>Select <u>CAR</u> from "Car Data Usage" </h4>
+    <select id="cars" onchange="updatekmy()">
+        <option value="BFB">Mégane Berline (IV)</option>
+        <option value="JFC">Espace (V)</option>
+        <option value="HFE">Kadjar</option>
+        <option value="LFD">Talisman Berline</option>
+        <option value="KFD">Talisman Estate</option>
+        <option value="B98">Clio (IV)</option>
+        <option value="J87">Captur (I)</option>
+      </select> <br>
+  <h4>Select <u>POWERTRAIN</u> from "Car Data Usage" </h4>
+      <select id="powertrain" onchange="updatekmy()">
+        <option value="K9K">K9K Diesel 1,5l Dci</option>
+        <option value="H5F">H5F Essence injection directe 1,2l</option>
+        <option value="R9M">R9M	Diesel 1,6l Dci</option>
+        <option value="M5M">M5M	Essence injection directe 2l</option>
+      </select> <br>
+  <h4>Select <u>SEGMENT</u> for "Simulator" </h4>
+      <select id="segment" onchange="updatekmy()">
+        <option value="0">I ess atmo</option>
+        <option value="1">I ess turbo</option>
+        <option value="2">M1 ess atmo</option>
+        <option value="3">M1 ess turbo</option>
+        <option value="4">M2S ess atmo</option>
+        <option value="5">M2S ess turbo</option>
+        <option value="6">I dies</option>
+        <option value="7">M1 dies</option>
+        <option value="8">M2S dies</option>
+
+      </select><br>
+      <h4>Select <u>CAR + POWERTRAIN</u> from "Calis" for WLTP fuel Consumption </h4>
+
+      <select id="equivcalis" onchange="updatekmy()">
+        <option value="0">Clio V / Life / SCe65</option>
+        <option value="1">Clio V / Life / SCe 75</option>
+        <option value="2">Clio V / Zen / TCe100</option>
+        <option value="3">Clio V / Zen / dCi85</option>
+        <option value="4">Clio V / Zen / dCi115</option>
+        <option value="5">Clio V / Intens / TCe130</option>
+        <option value="6">Capture 1 / Life / TCe90</option>
+        <option value="7">Capture 1 / Zen / TCe130</option>
+        <option value="8">Capture 1 / Zen / TCe150</option>
+        <option value="9">Megane Berline / Life / TCe115</option>
+        <option value="10">Megane Berline / Life / dCi95</option>
+        <option value="11">Megane Berline / Zen / TCe140</option>
+        <option value="12">Megane Berline / Zen / dCi115</option>
+        <option value="13">Megane Berline / Intens / TCe160</option>
+        <option value="14">Megane Berline / RS / 280 BVM</option> 
+        <option value="15">Megane Berline / Trophy / 300 BVM</option> 
+        <option value="16">Kadjar / Zen / TCe140</option> 
+        <option value="17">Kadjar / Zen / dCi115</option> 
+        <option value="18">Kadjar / Intens / TCe160 EDC</option> 
+        <option value="19">Kadjar / Intens / dCi150</option> 
+        <option value="20">Kadjar / Intens / dCi150 4x4</option> 
+        <option value="21">Talisman / Zen / TCe 160 EDC</option> 
+        <option value="22">Talisman / Zen / dCi150</option> 
+        <option value="23">Talisman / Intens / TCe225 EDC</option> 
+        <option value="24">Talisman / Intens / dCi200 EDC</option> 
+      </select> 
+    -->
+
+
+    <h1 id='TITLEg' align="center"><u>Help me choose test Algorithm V3</u></h1>
+
+    
+    <div id="idcountry" class="wrap-input100 validate-input m-b-16"  align="center">
+      <select class="combobox1" id="country" onchange="updateANSWER()">
+      <option value="AUSTRIA" >Austria</option>
+      <option value="BELGIUM_LUXEMBOURG" >Belgium Luxembourg</option>
+      <option value="FRANCE" selected>France</option>
+      <option value="GERMANY" >Germany</option>
+      <option value="ITALY" >Italy</option>
+      <option value="NETHERLANDS" >Netherlands</option>
+      <option value="PORTUGAL" >Portugal</option>
+      <option value="SPAIN" >Spain</option>
+      </select>
+    </div>
+
+
+    <div class="slidecontainer" onchange="updateANSWER()" align="center">
+      <p>Size of the car: <span id="demoCarS"></span><p>
+        <input type="range" min="1" max="3" value="2" class="slider" id="myRangeCarS">
+    </div>
+
+    <div class="slidecontainer" onchange="updateANSWER()" align="center">
+      <p>Height of the car: <span id="demoCarH"></span><p>
+        <input type="range" min="1" max="2" value="1" class="slider" id="myRangeCarH">
+    </div>
+
+
+      <div class="slidecontainer" onchange="updateANSWER()" align="center">
+      <p>Number of km per year: <span id="demo"></span></p>
+        <input type="range" min="1" max="50" value="15" class="slider" id="myRange">
+      </div>
+
+      <div class="slidecontainer" onchange="updateANSWER()" align="center">
+      <p>Number of km per day during the week: <span id="demoday"></span></p>
+        <input type="range" min="0" max="40" value="6" class="slider" id="myRangeday">
+      </div>
+
+      <div class="slidecontainer" onchange="updateANSWER()" align="center">
+        <p>Is the ecological criterion important in your purchase decision? <span id="demoEco"></span><p>
+          <input type="range" min="1" max="4" value="2" class="slider" id="myRangeEco">
+      </div>
+
+      <div class="slidecontainer" onchange="updateANSWER()" align="center">
+        <p>Are technological innovations important in your purchase decision? <span id="demoTech"></span><p>
+          <input type="range" min="1" max="4" value="2" class="slider" id="myRangeTech">
+      </div>
+
+      <div class="slidecontainer" onchange="updateANSWER()" align="center">
+        <p>Do you have to an electrical charging point, private or public</br> (at work or at home) ? otherwise is there an opportunity to add one ?
+          <span id="demoCP"></span><p> <!-- otherwise is there an opportunity to add one ? -->
+          <input type="range" min="1" max="2" value="2" class="slider" id="myRangeCP">
+      </div>
+
+      <div class="slidecontainer" onchange="updateANSWER()" align="center">
+        <p>Will you be affected by car city ban in the futur ?
+          <span id="demoCB"></span><p>
+          <input type="range" min="1" max="2" value="1" class="slider" id="myRangeCB">
+      </div>
+
+      <div class="slidecontainer" onchange="updateANSWER()" align="center">
+        <p>What is your car color tendency ?
+          <span id="demoColor"></span><p></p>
+          <input type="range" min="1" max="2" value="1" class="slider" id="myRangeColor">
+      </div>
+      
+
+      <h1 align="center"><u>1st : <span  id="firstcar"></span></u></h1>
+      <h2 align="center"><u>2nd : <span  id="secondcar"></span></u></h1>
+      <h2 align="center"><u>3rd : <span  id="thirdcar"></span></u></h1>
+
+
+      <div class="table100 ver1 m-b-110" style="display: none;">
+        <table data-vertable="ver1" id="myTable">
+          <thead>
+            <tr class="row100 head">
+              <th class="column100 column2" data-column="column2">Car Name</th>
+              <th class="column100 column2" data-column="column2">Petrol</th>
+              <th class="column100 column3" data-column="column3">Diesel</th>
+              <th class="column100 column4" data-column="column4">HEV</th>
+              <th class="column100 column5" data-column="column5">PHEV</th>
+              <th class="column100 column6" data-column="column6">EV</th>
+              <th class="column100 column7" data-column="column7">LPG</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row100">
+              <td class="column100 column2" data-column="column2">--</td>
+              <td class="column100 column2" data-column="column2">--</td>
+              <td class="column100 column3" data-column="column3">--</td>
+              <td class="column100 column4" data-column="column4">--</td>
+              <td class="column100 column5" data-column="column5">--</td>
+              <td class="column100 column6" data-column="column6">--</td>
+              <td class="column100 column7" data-column="column7">--</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+
+
+
+<!--
+      <h4><u>% of km in HIGHWAY: !!FIXED!!</u></h4> SUM OF:
+      <div>
+        
+        <input type="checkbox" id="ph11" name="ph11"  onchange="updatekmy()">
+        <label for="ph11">Time spent between 0 and 1km (unit: h) * </label>
+        <input type="text" id="ph12" name="ph12" size="2" value="0.5" onchange="updatekmy()">
+        <label for="ph12">(km/h) then divided by Totalkm (km)</label><br>
+        
+        <input type="checkbox" id="ph21" name="ph21"  onchange="updatekmy()">
+        <label for="ph21">Time spent between 1 and 60km (unit: h) * </label>
+        <input type="text" id="ph22" name="ph22" size="2" value="30.5" onchange="updatekmy()">
+        <label for="ph22">(km/h) then divided by Totalkm (km)</label><br>
+        
+        <input type="checkbox" id="ph31" name="ph31" onchange="updatekmy()" >
+        <label for="ph31">Time spent between 60 and 90km (unit: h) * </label>
+        <input type="text" id="ph32" name="ph32" size="2" value="75" onchange="updatekmy()">
+        <label for="ph32">(km/h) then divided by Totalkm (km)</label><br>
+        
+        <input type="checkbox" id="ph41" name="ph41" onchange="updatekmy()" >
+        <label for="ph41">Time spent between 90 and 110km (unit: h) * </label>
+        <input type="text" id="ph42" name="ph42" size="2" value="100" onchange="updatekmy()">
+        <label for="ph42">(km/h) then divided by Totalkm (km)</label><br>
+                
+        <input type="checkbox" id="ph51" name="ph51" checked onchange="updatekmy()">
+        <label for="ph51">Time spent between 110 and 200km (unit: h) * </label>
+        <input type="text" id="ph52" name="ph52" size="2" value="120" onchange="updatekmy()">
+        <label for="ph52">(km/h) then divided by Totalkm (km)</label><br>
+      </div>
+
+      -->
+
+       
+
+      <div class="slidecontainer" onchange="updateANSWER()" align="center">
+        <p>Are you satisfied with the end result?
+          <span id="demoCarFinal"></span><p>
+          <input type="range" min="1" max="2" value="1" class="slider" id="myRangeCarFinal">
+      </div>
+
+      <div onchange="updateANSWER()"   class="wrap-input100 validate-input m-b-16" align="center">
+        <label>Name</label> <br>
+        <textarea id="name" rows="1" cols="50"></textarea>
+      </div>
+
+      <div onchange="updateANSWER()"  class="wrap-input100 validate-input m-b-16"  align="center">
+        <label>Comments</label> <br>
+        <textarea id="comments" rows="4" cols="50"></textarea>
+      </div>
+
+      <script src="https://smtpjs.com/v3/smtp.js"></script>  
+      <div  align="center">
+        <input type="button" value="Send Email"  onclick="sendEmail()" align="center" >
+      </div>
+<!--
+    <div id="canvas-holder" style="width:40%;   margin-left: auto; margin-right: auto">
+      <canvas  id="chart-area" ></canvas>
+    </div>
+-->
+    <script>
+
+
+
+////////////////////////////////////////////////////////////
+///////////////////// SLIDER KM/YEAR ///////////////////////
+////////////////////////////////////////////////////////////
+
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerHTML = '<b>' + slider.value*1000 + 'km' + '</b>';
+
+slider.oninput = function() {
+  output.innerHTML = '<b>' + this.value*1000 + 'km' + '</b>';
+}
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////
+///////////////////// SLIDER KM/DAY ////////////////////////
+////////////////////////////////////////////////////////////
+
+var slider2 = document.getElementById("myRangeday");
+var output2 = document.getElementById("demoday");
+output2.innerHTML = '<b>' + slider2.value*5 + 'km' + '</b>';
+
+slider2.oninput = function() {
+  output2.innerHTML = '<b>' + this.value*5 + 'km' + '</b>';
+  
+  if(this.value*5*220 > slider.value*1000){
+    output.innerHTML = '<b>' + Math.round(this.value*5*220/1000)*1000 + 'km' + '</b>';
+    document.getElementById("myRange").value = Math.round(this.value*5*220/1000);
+  }
+}
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+///////////////////// SLIDER ECO ///////////////////////////
+////////////////////////////////////////////////////////////
+
+var slider3 = document.getElementById("myRangeEco");
+var output3 = document.getElementById("demoEco");
+
+if (slider3.value == 1) { 
+    output3.innerHTML = '<b>Minor</b>';
+  }
+
+if (slider3.value == 2) { 
+  output3.innerHTML = '<b>Slightly</b>';
+}
+
+if (slider3.value == 3) { 
+    output3.innerHTML = '<b>Important</b>';
+  }
+
+if (slider3.value == 4) { 
+  output3.innerHTML = '<b>Decisive</b>';
+}
+
+
+slider3.oninput = function() {
+  if (slider3.value == 1) { 
+    output3.innerHTML = '<b>Minor</b></b>';
+  }
+
+if (slider3.value == 2) { 
+  output3.innerHTML = '<b>Slightly</b>';
+}
+
+if (slider3.value == 3) { 
+    output3.innerHTML = '<b>Important</b>';
+  }
+
+if (slider3.value == 4) { 
+  output3.innerHTML = '<b>Decisive</b>';
+}
+}
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+  
+////////////////////////////////////////////////////////////
+///////////////////// SLIDER Tech ///////////////////////////
+////////////////////////////////////////////////////////////
+
+var slider4 = document.getElementById("myRangeTech");
+var output4 = document.getElementById("demoTech");
+
+if (slider4.value == 1) { 
+    output4.innerHTML = '<b>Minor</b>';
+  }
+
+if (slider4.value == 2) { 
+  output4.innerHTML = '<b>Slightly</b>';
+}
+
+if (slider4.value == 3) { 
+    output4.innerHTML = '<b>Important</b>';
+  }
+
+if (slider4.value == 4) { 
+  output4.innerHTML = '<b>Decisive</b>';
+}
+
+
+slider4.oninput = function() {
+  if (slider4.value == 1) { 
+    output4.innerHTML = '<b>Minor</b></b>';
+  }
+
+if (slider4.value == 2) { 
+  output4.innerHTML = '<b>Slightly</b>';
+}
+
+if (slider4.value == 3) { 
+    output4.innerHTML = '<b>Important</b>';
+  }
+
+if (slider4.value == 4) { 
+  output4.innerHTML = '<b>Decisive</b>';
+}
+}
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+///////////////////// SLIDER Charging Point ////////////////
+////////////////////////////////////////////////////////////
+
+var slider5 = document.getElementById("myRangeCP");
+var output5 = document.getElementById("demoCP");
+
+if (slider5.value == 1) { 
+    output5.innerHTML = '<b>No</b>';
+  }
+
+if (slider5.value == 2) { 
+  output5.innerHTML = '<b>Yes</b>';
+}
+
+
+slider5.oninput = function() {
+  if (slider5.value == 1) { 
+    output5.innerHTML = '<b>No</b>';
+  }
+
+if (slider5.value == 2) { 
+  output5.innerHTML = '<b>Yes</b>';
+}
+
+
+}
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+///////////////////// SLIDER Car city ban //////////////////
+////////////////////////////////////////////////////////////
+
+var slider6 = document.getElementById("myRangeCB");
+var output6 = document.getElementById("demoCB");
+
+if (slider6.value == 1) { 
+    output6.innerHTML = '<b>No</b>';
+  }
+
+if (slider6.value == 2) { 
+  output6.innerHTML = '<b>Yes</b>';
+}
+
+
+slider6.oninput = function() {
+  if (slider6.value == 1) { 
+    output6.innerHTML = '<b>No</b>';
+  }
+
+if (slider6.value == 2) { 
+  output6.innerHTML = '<b>Yes</b>';
+}
+
+}
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+
+
+////////////////////////////////////////////////////////////
+///////////////////// SLIDER Car Size //////////////////////
+////////////////////////////////////////////////////////////
+
+var slider7 = document.getElementById("myRangeCarS");
+var output7 = document.getElementById("demoCarS");
+
+if (slider7.value == 1) { 
+    output7.innerHTML = '<b>Small</b>';
+  }
+
+if (slider7.value == 2) { 
+  output7.innerHTML = '<b>Medium</b>';
+}
+
+if (slider7.value == 3) { 
+    output7.innerHTML = '<b>Large</b>';
+  }
+
+
+
+slider7.oninput = function() {
+  if (slider7.value == 1) { 
+    output7.innerHTML = '<b>Small</b>';
+  }
+
+if (slider7.value == 2) { 
+  output7.innerHTML = '<b>Medium</b>';
+}
+
+if (slider7.value == 3) { 
+    output7.innerHTML = '<b>Large</b>';
+  }
+
+}
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////
+///////////////////// SLIDER Car Height //////////////////////
+////////////////////////////////////////////////////////////
+
+var slider8 = document.getElementById("myRangeCarH");
+var output8 = document.getElementById("demoCarH");
+
+if (slider8.value == 1) { 
+    output8.innerHTML = '<b>Hatch</b>';
+  }
+
+if (slider8.value == 2) { 
+  output8.innerHTML = '<b>SUV/MPV</b>';
+}
+
+
+slider8.oninput = function() {
+  if (slider8.value == 1) { 
+    output8.innerHTML = '<b>Hatch</b>';
+  }
+
+if (slider8.value == 2) { 
+  output8.innerHTML = '<b>SUV/MPV</b>';
+}
+
+}
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+///////////////////// SLIDER color //////////////////////
+////////////////////////////////////////////////////////////
+
+var slider10 = document.getElementById("myRangeColor");
+var output10 = document.getElementById("demoColor");
+
+if (slider10.value == 1) { 
+    output10.innerHTML = '<b>Cold color</b>';
+  }
+
+if (slider10.value == 2) { 
+  output10.innerHTML = '<b>Warm color</b>';
+}
+
+
+slider10.oninput = function() {
+  if (slider10.value == 1) { 
+    output10.innerHTML = '<b>Cold color</b>';
+  }
+
+if (slider10.value == 2) { 
+  output10.innerHTML = '<b>Warm color</b>';
+}
+
+}
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+///////////////////// SLIDER Final //////////////////////
+////////////////////////////////////////////////////////////
+
+var slider9 = document.getElementById("myRangeCarFinal");
+var output9 = document.getElementById("demoCarFinal");
+
+if (slider9.value == 1) { 
+    output9.innerHTML = '<b>No</b>';
+  }
+
+if (slider9.value == 2) { 
+  output9.innerHTML = '<b>Yes</b>';
+}
+
+
+slider9.oninput = function() {
+  if (slider9.value == 1) { 
+    output9.innerHTML = '<b>No</b>';
+  }
+
+if (slider9.value == 2) { 
+  output9.innerHTML = '<b>Yes</b>';
+}
+
+}
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+///////////////////// Send e-mail //////////////////////////
+////////////////////////////////////////////////////////////
+
+function sendEmail() {
+    Email.send({
+    Host : "smtp.gmail.com",
+    Username : "tempforsiaanalysisfromasp@gmail.com",
+    Password : "Temps1234*",
+    To : "tempforsiaanalysisfromasp@gmail.com",
+    From : "Mycoursebeta@gmail.com",
+    Subject : "This is the subject",
+    Body : surveyAnswer
+    }).then(
+      message => alert("mail sent")
+    );
+}
+
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////
+///////////////////// Algoithm /////////////////////////////
+////////////////////////////////////////////////////////////
+
+var surveyAnswer=[];
+
+function updateANSWER() {
+
+  // Slider 7 = surveyAnswer[0] = Car size
+  // Slider 8 = surveyAnswer[1] = Car height
+  // Slider   = surveyAnswer[2] = km/year /1000
+  // Slider 2 = surveyAnswer[3] = km/day
+  // Slider 3 = surveyAnswer[4] = Eco  
+  // Slider 4 = surveyAnswer[5] = Techno
+  // Slider 5 = surveyAnswer[6] = Charging Point
+  // Slider 6 = surveyAnswer[7] = City Ban (1no 2yes)
+  // Slider 10= surveyAnswer[8] = Color (1 cold / 2warm)
+
+
+  var X = slider.value*1000;
+  var Y = slider2.value*5;
+
+  Mkmyear = [
+          //	#0plug
+            [[0.000000000000000002692027293885*X**4 - 0.000000000000234535902333224000*X**3 + 0.000000003907086534123470000000*X**2 - 0.000010836767031785500000000000*X + 9.983873426472940000000000000000],
+            [0.000000000000000002476800150727*X**4 - 0.000000000000232334570638739000*X**3 + 0.000000005145270352361750000000*X**2 + 0.000050644160812907100000000000*X + 8.120798911650520000000000000000],
+            [0.000000000000000001887250265091*X**4 - 0.000000000000181240724372232000*X**3 + 0.000000004306868188617330000000*X**2 + 0.000028482113295424900000000000*X + 8.706808637724350000000000000000],
+            [0.000000000000000003854354218219*X**4 - 0.000000000000369065492542050000*X**3 + 0.000000008863779431743740000000*X**2 + 0.000049638251773703700000000000*X + 5.355368836680440000000000000000],
+            [0],
+            [0.000000000000000002692027293885*X**4 - 0.000000000000234535902333224000*X**3 + 0.000000003907086534123470000000*X**2 - 0.000010836767031785500000000000*X + 9.983873426472940000000000000000]],
+           // #1&2plug
+            [[0.000000000000000002692027293885*X**4 - 0.000000000000234535902333224000*X**3 + 0.000000003907086534123470000000*X**2 - 0.000010836767031785500000000000*X + 9.983873426472940000000000000000],
+            [0.000000000000000002476800150727*X**4 - 0.000000000000232334570638739000*X**3 + 0.000000005145270352361750000000*X**2 + 0.000050644160812907100000000000*X + 8.120798911650520000000000000000],
+            [0.000000000000000003932410890388*X**4 - 0.000000000000356426150091642000*X**3 + 0.000000007058325892454050000000*X**2 + 0.000023049416321641000000000000*X + 8.690774344864740000000000000000],
+            [0.000000000000000006215266795404*X**4 - 0.000000000000575976372539933000*X**3 + 0.000000012476974475889400000000*X**2 + 0.000089488702205931000000000000*X + 6.257669082598570000000000000000],
+            [0.000000000000000004988760572773*X**4 - 0.000000000000515106107701469000*X**3 + 0.000000014571174802825100000000*X**2 - 0.000000957941216683800000000000*X + 6.891377084363340000000000000000],
+            [0.000000000000000002692027293885*X**4 - 0.000000000000234535902333224000*X**3 + 0.000000003907086534123470000000*X**2 - 0.000010836767031785500000000000*X + 9.983873426472940000000000000000]]];
+
+  Mkmday = [
+          //	#0plug
+          [[0.000000007625058271878720000000*Y**4 - 0.000006274339578909820000000000*Y**3 + 0.001712307110669610000000000000*Y**2 - 0.187782000520773000000000000000*Y+ 10.046183300464800000000000000000],
+          [0.000000073327084265756800000000*Y**4 - 0.000030347453742063000000000000*Y**3 + 0.003652376301114260000000000000*Y**2 - 0.070965765752980300000000000000*Y+ 3.072832962235110000000000000000],
+          [-0.000000017262881838984600000000*Y**4 + 0.000009583757575114260000000000*Y**3 - 0.001729144525398190000000000000*Y**2 + 0.101477473984218000000000000000*Y+ 7.854625923876310000000000000000],
+          [6],
+          [0],
+          [0.000000007625058271878720000000*Y**4 - 0.000006274339578909820000000000*Y**3 + 0.001712307110669610000000000000*Y**2 - 0.187782000520773000000000000000*Y+ 10.046183300464800000000000000000]],
+          //	#1plug
+          [[0.000000007625058271878720000000*Y**4 - 0.000006274339578909820000000000*Y**3 + 0.001712307110669610000000000000*Y**2 - 0.187782000520773000000000000000*Y+ 10.046183300464800000000000000000],
+          [0.000000073327084265756800000000*Y**4 - 0.000030347453742063000000000000*Y**3 + 0.003652376301114260000000000000*Y**2 - 0.070965765752980300000000000000*Y+ 3.072832962235110000000000000000],
+          [-0.000000017262881838984600000000*Y**4 + 0.000009583757575114260000000000*Y**3 - 0.001729144525398190000000000000*Y**2 + 0.101477473984218000000000000000*Y+ 7.854625923876310000000000000000],
+          [-0.000000059665820518542300000000*Y**4 + 0.000025185708848071000000000000*Y**3 - 0.003184266093662960000000000000*Y**2 + 0.087499654240410500000000000000*Y+ 9.844006341256260000000000000000],
+          [10],
+          [0.000000007625058271878720000000*Y**4 - 0.000006274339578909820000000000*Y**3 + 0.001712307110669610000000000000*Y**2 - 0.187782000520773000000000000000*Y+ 10.046183300464800000000000000000]],
+          //	#2plugs
+          [[0.000000007625058271878720000000*Y**4 - 0.000006274339578909820000000000*Y**3 + 0.001712307110669610000000000000*Y**2 - 0.187782000520773000000000000000*Y+ 10.046183300464800000000000000000],
+          [0.000000073327084265756800000000*Y**4 - 0.000030347453742063000000000000*Y**3 + 0.003652376301114260000000000000*Y**2 - 0.070965765752980300000000000000*Y+ 3.072832962235110000000000000000],
+          [-0.000000017262881838984600000000*Y**4 + 0.000009583757575114260000000000*Y**3 - 0.001729144525398190000000000000*Y**2 + 0.101477473984218000000000000000*Y+ 7.854625923876310000000000000000],
+          [0.000000059160732025491900000000*Y**4 - 0.000021359877633733400000000000*Y**3 + 0.002097271002379000000000000000*Y**2 - 0.059371036201085300000000000000*Y+ 10.164450425459800000000000000000],
+          [10],
+          [0.000000007625058271878720000000*Y**4 - 0.000006274339578909820000000000*Y**3 + 0.001712307110669610000000000000*Y**2 - 0.187782000520773000000000000000*Y+ 10.046183300464800000000000000000]]];
+
+
+
+
+  surveyAnswer=[];
+  surveyAnswer.push(slider7.value,slider8.value,slider.value,slider2.value*5,slider3.value,slider4.value,slider5.value,slider6.value,slider7.value,slider8.value,slider10.value,slider9.value,document.getElementById("name").value,document.getElementById("comments").value,document.getElementById("country").value,"Phase 3");
+  var countryindex = document.getElementById("country").selectedIndex;
+  var dailykm = [];
+  var yearlykm = [];
+  //Si NO charging point : 
+  if(slider5.value==1){
+    yearlykm=[Mkmyear[0][0][0],Mkmyear[0][1][0],Mkmyear[0][2][0],Mkmyear[0][3][0],Mkmyear[0][4][0],Mkmyear[0][5][0]];
+  }
+  else{ //sinon : 
+    yearlykm=[Mkmyear[1][0][0],Mkmyear[1][1][0],Mkmyear[1][2][0],Mkmyear[1][3][0],Mkmyear[1][4][0],Mkmyear[1][5][0]];
+  }
+
+
+  if(slider5.value==1){
+    dailykm=[Mkmday[0][0][0],Mkmday[0][1][0],Mkmday[0][2][0],Mkmday[0][3][0],Mkmday[0][4][0],Mkmday[0][5][0]];
+  }
+  if(slider5.value==2){
+    dailykm=[Mkmday[1][0][0],Mkmday[1][1][0],Mkmday[1][2][0],Mkmday[1][3][0],Mkmday[1][4][0],Mkmday[1][5][0]];
+  }
+  
+
+  var Cemotional = 0;
+  var Remotional = [0,0,0,0,0,0];
+  var Rrational  = [0,0,0,0,0,0];
+  var RsAop      = [0,0,0,0,0,0];
+  var Rtemp      = [1,1,1,1,1,1];
+  var idx        = 0;
+  var Rfinal     = [0,0,0,0,0,0];
+  var RcAp       = [];
+  
+
+  // abs de loop et division par 3 car les matrices ne sont pas dans la même matrice mère
+  Cemotional = (EcoQuestion[surveyAnswer[4]-1][6] + Techno[surveyAnswer[5]-1][6]  + CityBan[surveyAnswer[7]-1][6])/3;
+  
+  for(k = 0; k<6; k++)
+    {
+      Remotional[k] = (EcoQuestion[surveyAnswer[4]-1][k] + Techno[surveyAnswer[5]-1][k] + CityBan[surveyAnswer[7]-1][k])/3;
+    }
+
+    for(p = 0; p<6; p++)
+    {
+      if(yearlykm[p]*dailykm[p]!=0)  //simplification de l'écriture 
+      {
+        Rrational[p] = (yearlykm[p]+dailykm[p])/2;
+      }
+      else
+      {
+        Rrational[p]  = 0;   //useless mais bon pour la compréhension
+        Remotional[p] = 0;
+      }
+      RsAop[p]  = EVtendencybycountry[countryindex][p]*EVtendencybypowertrainbycountry[countryindex][p];
+      Rfinal[p] = RsAop[p]*(Remotional[p]*Cemotional + Rrational[p])/(1+Cemotional);
+      
+    }
+  
+  
+
+
+  var carbycountryselected = eval(document.getElementById("country").value);
+  var countryselectedindex = document.getElementById("country").selectedIndex;
+  var table = document.getElementById("myTable");
+
+  for(var i = table.rows.length - 1; i > 0; i--)
+    {
+      table.deleteRow(i);
+    }
+  //alert(carpossible[slider8.value-1][slider7.value-1].length)
+  
+  var finaltable = []; 
+  var finaltable2 = []; //dans le cas juste top 2
+  var finalname = [];
+  for(lc=0; lc<carpossible[slider8.value-1][slider7.value-1].length; lc++)
+  {
+    var carfinaloutput=carbycountryselected[carpossiblenumber[slider8.value-1][slider7.value-1][lc]]; //vehicle of the segement
+
+    var row = table.insertRow(1);
+    var cell0 = row.insertCell(0);
+    var cell1 = row.insertCell(1);
+    var cell2 = row.insertCell(2);
+    var cell3 = row.insertCell(3);
+    var cell4 = row.insertCell(4);
+    var cell5 = row.insertCell(5);
+    var cell6 = row.insertCell(6);
+    row.className = "row100";
+    cell0.innerHTML = carpossible[slider8.value-1][slider7.value-1][lc];
+    cell1.innerHTML = (1-Math.abs(carfinaloutput[0]-Cemotional))*Rfinal[0]*carfinaloutput[0];
+    cell2.innerHTML = (1-Math.abs(carfinaloutput[1]-Cemotional))*Rfinal[1]*carfinaloutput[1];
+    cell3.innerHTML = (1-Math.abs(carfinaloutput[2]-Cemotional))*Rfinal[2]*carfinaloutput[2];
+    cell4.innerHTML = (1-Math.abs(carfinaloutput[3]-Cemotional))*Rfinal[3]*carfinaloutput[3];
+    cell5.innerHTML = (1-Math.abs(carfinaloutput[4]-Cemotional))*Rfinal[4]*carfinaloutput[4];
+    cell6.innerHTML = (1-Math.abs(carfinaloutput[5]-Cemotional))*Rfinal[5]*carfinaloutput[5];
+    finaltable.push([cell1.innerHTML,cell2.innerHTML,cell3.innerHTML,cell4.innerHTML,cell5.innerHTML,cell6.innerHTML]);
+    finaltable2.push([cell1.innerHTML,cell2.innerHTML,cell3.innerHTML,cell4.innerHTML,cell5.innerHTML,cell6.innerHTML]);
+    finalname.push(cell0.innerHTML);
+    //cell2.style = "background-color: #ffcc33";
+  }
+  listoffirst=[];
+  listofsecond=[];
+  listofthird=[];
+  var maxColumn = finaltable.map(function(column){ return Math.max.apply(Math, column); });
+  var max1 = Math.max.apply(null, maxColumn);
+  
+  for(k=0; k<finaltable.length; k++){
+    for(l=0; l<6; l++){
+      if(max1==finaltable[k][l]){
+        document.getElementById("firstcar").innerHTML = finalname[k] + ' ' + powertrainnames[l];
+        finaltable2[k][l]= 0; //supprimer best value de table2 si DIESEL ET ESS uniquement
+        for(t=0; t<finaltable.length; t++){
+          finaltable[t][l] = 0;
+        }
+      }
+    }
+  }
+
+  var maxColumn = finaltable.map(function(column){ return Math.max.apply(Math, column); });
+  var max2 = Math.max.apply(null, maxColumn);
+  
+  for(k=0; k<finaltable.length; k++){
+    for(l=0; l<6; l++){
+      if(max2==finaltable[k][l]){
+        document.getElementById("secondcar").innerHTML = finalname[k] + ' ' + powertrainnames[l];
+        finaltable2[k][l]= 0;
+        for(t=0; t<finaltable.length; t++){
+          finaltable[t][l] = 0;
+        }
+      }
+    }
+  }
+
+  var maxColumn = finaltable.map(function(column){ return Math.max.apply(Math, column); });
+  var max3 = Math.max.apply(null, maxColumn);
+  
+  if(max3!=0){
+    for(k=0; k<finaltable.length; k++){
+      for(l=0; l<6; l++){
+        if(max3==finaltable[k][l]){
+          document.getElementById("thirdcar").innerHTML = finalname[k] + ' ' + powertrainnames[l];
+          for(t=0; t<finaltable.length; t++){
+            finaltable[t][l] = 0;
+          }
+        }
+      }
+    }
+  }
+  else{
+    //document.getElementById("thirdcar").innerHTML = '';
+    var maxColumn = finaltable2.map(function(column){ return Math.max.apply(Math, column); });
+    var max1 = Math.max.apply(null, maxColumn);
+
+    for(k=0; k<finaltable2.length; k++){
+    for(l=0; l<6; l++){
+      if(max1==finaltable2[k][l]){
+        document.getElementById("thirdcar").innerHTML = finalname[k] + ' ' + powertrainnames[l];
+        finaltable2[k][l]= 0; //supprimer best value de table2 si DIESEL ET ESS uniquement
+        for(t=0; t<finaltable2.length; t++){
+          finaltable2[t][l] = 0;
+        }
+      }
+    }
+  }
+  }
+  
+  listofmaxvalue=[];
+  indexofmaxvalue=[];
+
+        
+  }
+
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+                  //small,medium,large
+  var carpossible = [[["Twingo","Clio","ZOE"],["Megane Break","Megane Estate"],["Talisman Break","Talisman Estate","Megane Estate"]],   //hatch
+                     [["Captur"],["Kadjar","Scenic"],["Koleos","Espace","GdScenic"]]];  //SUV/MPV "Arkana" missing
+
+  var carpossiblenumber = [[[0,1,2],[3,4],[5,6,4]],   
+                           [[7],[8,9],[10,11,12]]]; 
+      //ECO Notimportant to decisive
+  var EcoQuestion =   [[10,10,3,3,3,10,0],
+                       [7,7,5,5,5,5,0.33],
+                       [2,2,8,8,10,2,0.66],
+                       [1,1,5,8,10,3,1]];
+
+      //Techno Notimportant to decisive
+  var Techno = [[10,10,5,5,5,7,0],
+                [7,7,7,7,7,7,0.33],
+                [6,6,8,9,8,6,0.66],
+                [4,4,7,10,7,7,1]];
+
+      //Chargingpoint 0 1 2
+  var ChargingP = [[6,6,9,0.5, 0,8,0.3],
+                   [6,6,6,  9, 9,6,0.7],
+                   [6,6,6, 10,10,6,  1]];
+
+  //CityBan N Y
+  var CityBan =  [[10,10,10,10,10,10,0.5],
+                  [4,4,6,10,10,4,1]]; //abs of count
+
+  //Je dois faire le reglage des KM
+  var kmimpact = [1,1,1,1,1,1];
+
+
+  var powertrainnames = ["Petrol","Diesel","Hybrid","Plug-in Hybrid", "ZE" , "LPG"];
+
+  var AUSTRIA =  [[1,0,0,0,1,0], //"B07"  "Twingo"   SMALL HATCH
+                  [1,1,1,0,0,0], //"BJA"  "Clio"     SMALL HATCH
+                  [0,0,0,0,1,0], //"B10"  "ZOE"      SMALL HATCH
+                  [1,1,0,0,0,0], //"BFB"  "Megane"   MEDIUM HATCH
+                  [1,1,0,1,0,0], //"KFB"  "Megane"   MEDIUM HATCH
+                  [1,1,0,0,0,0], //"LFD"  "Talisman" LARGE HATCH
+                  [1,1,0,0,0,0], //"KFD"  "Talisman" LARGE HATCH
+                  [1,1,0,1,0,0], //"HJB"  "Captur"   SMALL SUV/MPV
+                  [1,1,0,0,0,0], //"HFE"  "Kadjar"   MEDIUM SUV/MPV
+                  [1,1,0,0,0,0], //"JFA"  "Scenic"   MEDIUM SUV/MPV
+                  [0,1,0,0,0,0], //"HZG"  "Koleos"   LARGE SUV/MPV
+                  [1,1,0,0,0,0], //"JFC"  "Espace"   LARGE SUV/MPV
+                  [1,1,0,0,0,0]]; //"RFA" "GdScenic" LARGE SUV/MPV
+
+                  
+  var BELGIUM_LUXEMBOURG = [[1,0,0,0,1,0],
+                            [1,1,1,0,0,0],
+                            [0,0,0,0,1,0],
+                            [1,1,0,0,0,0],
+                            [1,1,0,1,0,0],
+                            [1,1,0,0,0,0],
+                            [1,1,0,0,0,0],
+                            [1,1,0,1,0,0],
+                            [1,1,0,0,0,0],
+                            [1,1,0,0,0,0],
+                            [1,1,0,0,0,0],
+                            [1,1,0,0,0,0],
+                            [1,1,0,0,0,0]];
+
+
+  var FRANCE = [[1,0,0,0,0.4,0], //"B07"  "Twingo"   SMALL HATCH
+                [0.9,1,1,0,0,1], //"BJA"  "Clio"     SMALL HATCH
+                [0,0,0,0,1,0], //"B10"  "ZOE"      SMALL HATCH
+                [1,1,0,0,0,0], //"BFB"  "Megane"   MEDIUM HATCH
+                [1,1,0,1,0,0], //"KFB"  "Megane"   MEDIUM HATCH
+                [1,1,0,0,0,0], //"LFD"  "Talisman" LARGE HATCH
+                [1,1,0,0,0,0], //"KFD"  "Talisman" LARGE HATCH
+                [1,1,0,1,0,1], //"HJB"  "Captur"   SMALL SUV/MPV
+                [1,1,0,0,0,0], //"HFE"  "Kadjar"   MEDIUM SUV/MPV
+                [0.5,0.5,0,0,0,0], //"JFA"  "Scenic"   MEDIUM SUV/MPV
+                [1,1,0,0,0,0], //"HZG"  "Koleos"   LARGE SUV/MPV
+                [0.5,0.5,0,0,0,0], //"JFC"  "Espace"   LARGE SUV/MPV
+                [0.1,0.1,0,0,0,0]]; //"RFA" "GdScenic" LARGE SUV/MPV
+
+
+  var GERMANY =  [[1,0,0,0,1,0],
+                  [1,1,1,0,0,0],
+                  [0,0,0,0,1,0],
+                  [1,1,0,0,0,0],
+                  [1,1,0,1,0,0],
+                  [1,1,0,0,0,0],
+                  [1,1,0,0,0,0],
+                  [1,1,0,1,0,1],
+                  [1,1,0,0,0,0],
+                  [1,1,0,0,0,0],
+                  [1,1,0,0,0,0],
+                  [1,1,0,0,0,0],
+                  [1,1,0,0,0,0]];
+
+
+  var ITALY =  [[1,0,0,0,1,1],
+                [1,1,1,0,0,1],
+                [0,0,0,0,1,0],
+                [1,1,0,0,0,0],
+                [1,1,0,1,0,0],
+                [1,1,0,0,0,0],
+                [1,1,0,0,0,0],
+                [1,1,0,1,0,1],
+                [1,1,0,0,0,0],
+                [1,1,0,0,0,0],
+                [1,1,0,0,0,0],
+                [1,1,0,0,0,0],
+                [1,1,0,0,0,0]];
+
+
+  var NETHERLANDS =  [[1,0,0,0,1,0],
+                      [1,1,1,0,0,1],
+                      [0,0,0,0,1,0],
+                      [1,1,0,0,0,0],
+                      [1,1,0,1,0,0],
+                      [1,1,0,0,0,0],
+                      [1,1,0,0,0,0],
+                      [1,0,0,1,0,1],
+                      [1,1,0,0,0,0],
+                      [1,1,0,0,0,0],
+                      [0,1,0,0,0,0],
+                      [1,1,0,0,0,0],
+                      [1,1,0,0,0,0]];
+
+
+  var PORTUGAL = [[1,0,0,0,0,0],
+                  [1,1,1,0,0,1],
+                  [0,0,0,0,1,0],
+                  [1,1,0,0,0,0],
+                  [1,1,0,1,0,0],
+                  [1,1,0,0,0,0],
+                  [1,1,0,0,0,0],
+                  [1,1,0,1,0,1],
+                  [1,1,0,0,0,0],
+                  [1,1,0,0,0,0],
+                  [1,1,0,0,0,0],
+                  [1,1,0,0,0,0],
+                  [1,1,0,0,0,0]];
+
+  var SPAIN =  [[1,0,0,0,1,0],
+                [1,1,1,0,0,1],
+                [0,0,0,0,1,0],
+                [1,1,0,0,0,0],
+                [1,1,0,1,0,0],
+                [1,1,0,0,0,0],
+                [1,1,0,0,0,0],
+                [1,1,0,1,0,1],
+                [1,1,0,0,0,0],
+                [1,1,0,0,0,0],
+                [1,1,0,0,0,0],
+                [1,1,0,0,0,0],
+                [1,1,0,0,0,0]];
+
+                                 //for Petrol / Diesel / HEV / PHEV / EV /LPG
+  var EVtendencybycountry2 =  [[1. , 1. , 2.7, 2.7, 2.7, 1. ], //AUSTRIA
+                              [1. , 1. , 1.2, 1.2, 1.2, 1. ], //BELGIUM_LUXEMBOURG
+                              [1. , 1. , 2. , 2. , 2. , 1. ], //FRANCE
+                              [1. , 1. , 2.2, 2.2, 2.2, 1. ], //GERMANY
+                              [1. , 1. , 1.3, 1.3, 1.3, 1. ], //ITALY
+                              [1. , 1. , 2.3, 2.3, 2.3, 1. ], //NETHERLANDS
+                              [1. , 1. , 1.3, 1.3, 1.3, 1. ], //PORTUGAL
+                              [1. , 1. , 0.9, 0.9, 0.9, 1. ]]; //SPAIN
+
+  //imobilisation temporaire
+  var EVtendencybycountry =  [[1. , 1. , 1. , 1. , 1. , 1. ], //AUSTRIA
+                              [1. , 1. , 1. , 1. , 1. , 1. ], //BELGIUM_LUXEMBOURG
+                              [1. , 1. , 1. , 1. , 1. , 1. ], //FRANCE
+                              [1. , 1. , 1. , 1. , 1. , 1. ], //GERMANY
+                              [1. , 1. , 1. , 1. , 1. , 1. ], //ITALY
+                              [1. , 1. , 1. , 1. , 1. , 1. ], //NETHERLANDS
+                              [1. , 1. , 1. , 1. , 1. , 1. ], //PORTUGAL
+                              [1. , 1. , 1. , 1. , 1. , 1. ]]; //SPAIN
+
+
+
+  
+                                             //for Petrol / Diesel / HEV / PHEV / EV /LPG
+  var EVtendencybypowertrainbycountry =  [[1.69, 1.3 , 1.15, 1.14, 1.69, 1.  ],
+                                          [1.6 , 1.39, 1.35, 1.24, 1.4 , 1.  ],
+                                          [1.51, 1.44, 1.28, 1.12, 1.59, 1.03],
+                                          [1.81, 1.18, 1.09, 1.15, 1.75, 1.  ],
+                                          [1.27, 1.49, 1.39, 1.31, 1.29, 1.23],
+                                          [1.76, 1.07, 1.25, 1.29, 1.45, 1.16],
+                                          [1.48, 1.47, 1.08, 1.12, 1.79, 1.04],
+                                          [1.45, 1.48, 1.38, 1.21, 1.4 , 1.06]];
+
+  
+
+
+
+    var randomScalingFactor = function() {
+			return Math.round(Math.random() * 100);
+		};
+
+		var config = {
+			type: 'pie',
+			data: {
+				datasets: [{
+					data: [
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+					],
+					backgroundColor: [
+						window.chartColors.red,
+						window.chartColors.orange,
+						window.chartColors.yellow,
+						window.chartColors.green,
+						window.chartColors.blue,
+					],
+					label: 'Dataset 1'
+				}],
+				labels: [
+					'Red',
+					'Orange',
+					'Yellow',
+					'Green',
+					'Blue'
+				]
+			},
+			options: {
+				responsive: true
+			}
+		};
+
+		window.onload = function() {
+			var ctx = document.getElementById('chart-area').getContext('2d');
+			window.myPie = new Chart(ctx, config);
+		};
+
+		document.getElementById('randomizeData').addEventListener('click', function() {
+			config.data.datasets.forEach(function(dataset) {
+				dataset.data = dataset.data.map(function() {
+					return randomScalingFactor();
+				});
+			});
+
+			window.myPie.update();
+		});
+
+		var colorNames = Object.keys(window.chartColors);
+		document.getElementById('addDataset').addEventListener('click', function() {
+			var newDataset = {
+				backgroundColor: [],
+				data: [],
+				label: 'New dataset ' + config.data.datasets.length,
+			};
+
+			for (var index = 0; index < config.data.labels.length; ++index) {
+				newDataset.data.push(randomScalingFactor());
+
+				var colorName = colorNames[index % colorNames.length];
+				var newColor = window.chartColors[colorName];
+				newDataset.backgroundColor.push(newColor);
+			}
+
+			config.data.datasets.push(newDataset);
+			window.myPie.update();
+		});
+
+		document.getElementById('removeDataset').addEventListener('click', function() {
+			config.data.datasets.splice(0, 1);
+			window.myPie.update();
+    });
+    
+
+	</script>
+</body>
+
+</html>
